@@ -1,12 +1,15 @@
 require('dotenv').config()
 
 const {
-    HOST
+    MYSQL_HOST,
+    MYSQL_DB,
+    MYSQL_USER,
+    MYSQL_PWD
 } = process.env
 
 const Sequelize = require('sequelize')
-const sequelize =  new Sequelize('simpus', 'root', 'pkm', {
-    host: HOST,
+const sequelize =  new Sequelize(MYSQL_DB, MYSQL_USER, MYSQL_PWD, {
+    host: MYSQL_HOST,
     operatorsAliases: false,
     dialect: 'mysql',
     pool: {
