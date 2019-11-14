@@ -1,0 +1,24 @@
+{
+  "name": "e-logistik",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mlengse/e-logistik.git"
+  },
+  "author": "mlengse",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mlengse/e-logistik/issues"
+  },
+  "homepage": "https://github.com/mlengse/e-logistik#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "mysql2": "^2.0.0",
+    "sequelize": "^5.21.2"
+  }
+}
