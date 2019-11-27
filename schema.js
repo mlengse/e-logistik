@@ -1,28 +1,33 @@
-const { GraphQLSchema } = require('graphql');
-const express = require('express');
-const graphqlHTTP = require('express-graphql');
- 
-var options = {
-//   exclude: ['bpjs_consciousness']
-}
- 
-const { 
-    // generateModelTypes, 
-    generateSchema 
-} = require('sequelize-graphql-schema')(options);
- 
-const models = require('./db.js');
-
-const app = express();
- 
-app.use(
-  '/graphql',
-  graphqlHTTP({
-    schema: new GraphQLSchema(generateSchema(models)),
-    graphiql: true
-  })
-)
- 
-app.listen(8080, function() {
-  console.log('RUNNING ON 8080. Graphiql http://localhost:8080/graphql')
-})
+export default `
+  type Drugs {
+    id: String!
+    nama: String
+    kelas: String
+    satuan: String
+    kodegf: String
+    generik: Int
+    injeksi: Int
+    antibiotik: Int
+    psikotropika: Int
+    aktif: Int!
+  }
+  type Recipes {
+    id: Int!
+    visit_id: Int!
+    drug_id: String!
+    jumlah: Float
+    dosis: String!
+    puyer: Int
+  }
+  type Visits {
+    id: Int!
+    patient_id: String!
+    tanggal: String!
+    nama: String
+    alamat: String
+  }
+  type Query {
+  }
+  type Mutation {
+  }
+`;
