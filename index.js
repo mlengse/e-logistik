@@ -1,17 +1,14 @@
-const express = require('express');
+require('dotenv').config()
 const graphqlHTTP = require('express-graphql');
+const app = (require('express'))();
+const schema = require('./simpus-api/schema')
+const arangoAPI = require('./arango-api')
+
+app.use( '/graphiql', graphqlHTTP({
+  schema,
+  graphiql: true
+}))
  
-const Schema = require('./simpus-api/schema')
-const app = express();
- 
-app.use(
-  '/graphql',
-  graphqlHTTP({
-    schema: Schema,
-    graphiql: true
-  })
-)
- 
-app.listen(8080, function() {
-  console.log('RUNNING ON 8080. Graphiql http://localhost:8080/graphql')
-})
+arangoAPI(app)
+
+app.listen(8080, () => console.log('RUNNING ON 8080. Graphiql http://localhost:8080'))

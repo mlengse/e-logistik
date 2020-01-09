@@ -1,0 +1,43 @@
+type RekapObat {
+  _key: String!
+  jumlah: Float
+  recipes: [Recipes]
+}
+
+type Recipes {
+  id: String
+  jml: Float
+}
+
+input InputObat {
+  id: String
+  batch: String
+  harga: Float
+  jml: Float
+  tglTerima: String
+  tglED: String
+}
+
+type Key {
+  _key: String
+}
+
+type Obat {
+  _key: String!
+  id: String
+  batch: String
+  harga: Float
+  jml: Float
+  tglTerima: String
+  tglED: String
+}
+
+type Query {
+  rekapObat(_key: String): [RekapObat]
+  obatMasuk: [Obat]
+}
+
+type Mutation {
+  terimaObat( _key: String id: String, batch: String, harga: Float, jml: Float, tglTerima: String, tglED: String ): Obat
+  hapusObat( _key: String ): Key
+}
